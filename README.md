@@ -4,6 +4,14 @@ This is a project template for [Svelte](https://svelte.technology) single page a
 
 It is based on [template-webpack](https://github.com/sveltejs/template-webpack) and [svelte-router](https://github.com/jikkai/svelte-router) as a router.
 
+## Features
+* Clear structure for new project
+* Using Webpack4. Hot Reload Modules enabled.
+* Using extract-css-chunks plugin for HRM supporting.
+* Integrated router with two way navigation possibility. No page reload.
+    * Regular URLs (you need set rewrite rule on production server!).
+    * URL with hash(need configs changing)
+
 ## Installation
 
 To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
