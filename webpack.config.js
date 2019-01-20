@@ -17,7 +17,13 @@ module.exports = {
 		chunkFilename: '[name].[id].js'
 	},
 	devServer: {
-		historyApiFallback: true
+		historyApiFallback: true,
+		proxy: {
+			'/api': {
+			  target: 'https://my.site/', //will proxy to https://my.site/api
+			  secure: false
+			}
+		  }
 	},
 	module: {
 		rules: [

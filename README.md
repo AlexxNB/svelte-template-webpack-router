@@ -45,3 +45,21 @@ Then all you builded SPA files will be in public directory.
 
 ## URLs
 Default settings uses ordinary URLs based on `"history"` method. You can change mode to `"hash"` in `./App.html` to use URLs with `#` sign.
+
+## Proxy
+
+There is proxy which can be used for external API calls in development environment. Please check out `webpack.config.js` file to edit your API path:
+
+```javascript
+...
+devServer: {
+    ...
+    proxy: {
+        '/api': {
+            target: 'https://my.site/', //will proxy to https://my.site/api
+            secure: false
+        }
+    }
+}
+...
+```
