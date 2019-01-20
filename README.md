@@ -1,4 +1,4 @@
-# svelte SPA
+# Svelte SPA Template
 
 This is a project template for [Svelte](https://svelte.technology) single page apps. It lives at https://github.com/AlexxNB/svelte-template-webpack-router.
 
