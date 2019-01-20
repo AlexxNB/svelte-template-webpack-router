@@ -11,25 +11,25 @@
 	import About from './views/About.html'
   
 	const router = new SvelteRouter({
-	  mode: 'history',
-	  routes: {
-		'/': Home,
-		'/about': About
-	  }
+        mode: 'history',
+        routes: {
+            '/': Home,
+            '/about': About
+        }
 	})
   
 	export default {
-	  oncreate () {
-		router.create('#app')
-	  },
-  
-	  ondestroy () {
-		router.destroy()
-	  },
-  
-	  components: {
-		RouterLink: SvelteRouter.RouterLink
-	  }
+        oncreate () {
+            router.create('#app')
+        },
+    
+        ondestroy () {
+            router.destroy()
+        },
+    
+        components: {
+            RouterLink: SvelteRouter.RouterLink
+        }
 	}
   </script>
 
