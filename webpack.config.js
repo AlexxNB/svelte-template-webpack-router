@@ -11,6 +11,7 @@ module.exports = {
 	entry: {
 		bundle: ['./src/main.js']
 	},
+	watch: true,
 	resolve: {
 		extensions: ['.js', '.html']
 	},
@@ -20,8 +21,9 @@ module.exports = {
 		chunkFilename: '[name].[id].js'
 	},
 	devServer: {
-		contentBase: path.join(__dirname, 'dist'),
 		compress: true,
+		inline:true,
+		hot:true,
 		historyApiFallback: true,
 		overlay: {
 			warnings: true,
@@ -44,7 +46,7 @@ module.exports = {
 					options: {
 						skipIntroByDefault: true,
 						nestedTransitions: true,
-						emitCss: false,
+						emitCss: true,
 						hotReload: true,
 						preprocess: require('svelte-preprocess')({ 
 							transformers: {
@@ -75,6 +77,9 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: ' ',
+			hash: true,
+			files: {
+			}
 		}),
 		new ExtractCssChunks(
 			{
