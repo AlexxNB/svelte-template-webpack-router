@@ -1,3 +1,4 @@
+import './styles/global.scss';  //import all global styles here. It will be packet in bandle.
 import App from './App.html';
 
 const app = new App({

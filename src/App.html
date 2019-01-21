@@ -1,7 +1,10 @@
+<svelte:head>
+	<title>My App</title>
+</svelte:head>
 <div>
 	<RouterLink className="nav" to="/">Home</RouterLink>
 	<RouterLink className="nav" to="/about">About</RouterLink>
-	<div id="app"></div>
+	<div id="router-view"></div>
 </div>
 
 
@@ -20,7 +23,7 @@
   
 	export default {
         oncreate () {
-            router.create('#app')
+            router.create('#router-view')
         },
     
         ondestroy () {
@@ -34,13 +37,14 @@
   </script>
 
 <style type="text/scss">
-	$color: blue;
-	$active-color: red;
+	@import './styles/vars';
+
+
 	:global(a.nav) {
-		color: $color;
+		color: $link-color;
 	}
 
 	:global(a.router-link-active) {
-		color: $active-color;
+		color: $nav-color-active;
 	}
 </style>

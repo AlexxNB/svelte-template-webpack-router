@@ -1,5 +1,8 @@
 const webpack = require('webpack');
+var path = require('path');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const mode = process.env.NODE_ENV || 'development';
 const prod = mode === 'production';
@@ -12,12 +15,18 @@ module.exports = {
 		extensions: ['.js', '.html']
 	},
 	output: {
-		path: __dirname + '/public',
+		path: path.join(__dirname, 'dist'),
 		filename: '[name].js',
 		chunkFilename: '[name].[id].js'
 	},
 	devServer: {
+		contentBase: path.join(__dirname, 'dist'),
+		compress: true,
 		historyApiFallback: true,
+		overlay: {
+			warnings: true,
+			errors: true
+		},
 		proxy: {
 			'/api': {
 			  target: 'https://my.site/', //will proxy to https://my.site/api
@@ -29,13 +38,13 @@ module.exports = {
 		rules: [
 			{
 				test: /\.html$/,
-				exclude: /node_modules/,
-				use: {
+				exclude: [/node_modules/],
+				use: [{
 					loader: 'svelte-loader',
 					options: {
 						skipIntroByDefault: true,
 						nestedTransitions: true,
-						emitCss: true,
+						emitCss: false,
 						hotReload: true,
 						preprocess: require('svelte-preprocess')({ 
 							transformers: {
@@ -43,7 +52,7 @@ module.exports = {
 							}
 						})
 					}
-				}
+				}]
 			},
 			{
 				test: /\.css$/,
@@ -51,11 +60,22 @@ module.exports = {
 					ExtractCssChunks.loader,
 					"css-loader"
 				]
-	}
+			},
+			{
+				test: /\.scss$/,
+				use: [
+					ExtractCssChunks.loader,
+					"css-loader",
+					"sass-loader"
+				]
+			}
 		]
 	},
 	mode,
 	plugins: [
+		new HtmlWebpackPlugin({
+			title: ' ',
+		}),
 		new ExtractCssChunks(
 			{
 			  filename: "[name].css",
@@ -66,6 +86,7 @@ module.exports = {
 			  cssModules: true
 			}
 		),
+		new CopyWebpackPlugin([{ from: 'src/assets' }])
 	],
 	devtool: prod ? false: 'source-map'
 };
