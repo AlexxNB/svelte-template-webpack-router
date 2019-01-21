@@ -36,7 +36,12 @@ module.exports = {
 						skipIntroByDefault: true,
 						nestedTransitions: true,
 						emitCss: true,
-						hotReload: true
+						hotReload: true,
+						preprocess: require('svelte-preprocess')({ 
+							transformers: {
+								scss: true,
+							}
+						})
 					}
 				}
 			},

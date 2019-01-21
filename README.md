@@ -1,4 +1,4 @@
-# Svelte SPA Template
+# Svelte SPA Template (Webpack version)
 
 This is a project template for [Svelte](https://svelte.technology) single page apps. It lives at https://github.com/AlexxNB/svelte-template-webpack-router.
 
@@ -8,6 +8,7 @@ It is based on [template-webpack](https://github.com/sveltejs/template-webpack) 
 * Clear structure for new project
 * Using Webpack4. Hot Reload Modules enabled.
 * Using extract-css-chunks plugin for HRM supporting.
+* Supporting for SCSS in SFC.
 * Integrated router with two way navigation possibility. No page reload.
     * Regular URLs (you need set rewrite rule on production server!).
     * URL with hash(need configs changing)

@@ -33,12 +33,14 @@
 	}
   </script>
 
-<style>
+<style type="text/scss">
+	$color: blue;
+	$active-color: red;
 	:global(a.nav) {
-		color: rgb(78, 81, 241);
+		color: $color;
 	}
 
 	:global(a.router-link-active) {
-		color: red;
+		color: $active-color;
 	}
 </style>
