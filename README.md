@@ -2,7 +2,7 @@
 
 This is a project template for [Svelte](https://svelte.technology) single page apps. It lives at https://github.com/AlexxNB/svelte-template-webpack-router.
 
-It is based on [template-webpack](https://github.com/sveltejs/template-webpack) and [svelte-router](https://github.com/jikkai/svelte-router) as a router.
+It is based on [template-webpack](https://github.com/sveltejs/template-webpack) and [svelte-router](https://github.com/jikkai/svelte-router) as a router. Also used [svg-sprite-loader](https://github.com/kisenka/svg-sprite-loader) for icons.
 
 ## Features
 * Clear structure for new project
@@ -12,6 +12,7 @@ It is based on [template-webpack](https://github.com/sveltejs/template-webpack) 
 * Integrated router with two way navigation possibility. No page reload.
     * Regular URLs (you need set rewrite rule on production server!).
     * URL with hash(need configs changing)
+* Icon component with SVG sprite autogenerating.
 
 ## Installation
 

@@ -1,0 +1,33 @@
+<i><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg">
+    {#if title}
+    <title>{title}</title>
+    {/if}
+    <use xlink:href="{icon_url}" xmlns:xlink="http://www.w3.org/1999/xlink"/>
+</svg>
+</i>
+<script>
+    export default {
+        data:function(){
+            return {
+                name:'undefined',
+                title: undefined
+            }
+        },
+        computed:{
+            icon_url({name}){
+                let i = require('./../../assets/icons/'+name+'.svg');
+                return i.default.url;
+            }
+        },
+    }
+</script>
+
+
+<style>
+    .svg-icon {
+      fill: currentColor;
+      height: 24px;
+      width: 24px;
+      vertical-align: middle;
+    }
+</style>

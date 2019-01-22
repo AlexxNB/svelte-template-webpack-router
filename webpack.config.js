@@ -3,16 +3,21 @@ var path = require('path');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
+
+
 const Config = require('./template.config.js');
 
 const mode = process.env.NODE_ENV || 'development';
 const prod = mode === 'production';
 
+ 
+
 module.exports = {
 	entry: {
 		bundle: ['./src/main.js']
 	},
-	watch: true,
+	watch: !prod,
 	resolve: {
 		extensions: ['.js', '.html']
 	},
@@ -66,6 +71,15 @@ module.exports = {
 					"css-loader",
 					"sass-loader"
 				]
+			},
+			{
+				test: /icons\/.+\.svg$/,
+				use: [{loader: 'svg-sprite-loader',
+					options: {
+					  extract: true,
+					  spriteFilename: 'icons/sprite-[hash:8].svg'
+					}
+				},'svgo-loader']
 			}
 		]
 	},
@@ -73,9 +87,7 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: Config.title,
-			hash: true,
-			files: {
-			}
+			hash: true
 		}),
 		new ExtractCssChunks(
 			{
@@ -87,7 +99,10 @@ module.exports = {
 			  cssModules: true
 			}
 		),
-		new CopyWebpackPlugin([{ from: 'src/assets' }])
+		new CopyWebpackPlugin([{ from: 'src/assets'}]),
+		new SpriteLoaderPlugin({
+			plainSprite: true
+		} )
 	],
 	devtool: prod ? false: 'source-map'
 };

@@ -1,19 +1,22 @@
 <div id="container">
 	<img src="images/logo.png" alt=""/>
 	<div>
-		<RouterLink className="nav" to="/">Home</RouterLink>
-		<RouterLink className="nav" to="/about">About</RouterLink>
+		<RouterLink className="nav" to="/"><Icon name="home" /> Home</RouterLink>
+		<RouterLink className="nav" to="/about"><Icon name="about" /> About</RouterLink>
 		<div id="router-view"></div>
 	</div>
 </div>
 
 
+
 <script>
 	import './styles/global.scss';  //import all global styles here. It will be packet in bandle.
-	
+	import Icon from './components/atoms/Icon.html';
 	import SvelteRouter from 'svelte-router'
 	import Home from './views/Home.html'
 	import About from './views/About.html'
+
+	
 	
 	import Config from './../template.config.js';
 
@@ -28,16 +31,17 @@
 	})
   
 	export default {
+		components: {
+			Icon,
+			RouterLink: SvelteRouter.RouterLink
+		},
+		
         oncreate () {
             router.create('#router-view')
         },
     
         ondestroy () {
             router.destroy()
-        },
-    
-        components: {
-            RouterLink: SvelteRouter.RouterLink
         }
 	}
   </script>
@@ -48,6 +52,7 @@
 
 	:global(a.nav) {
 		color: $link-color;
+		margin:5px 10px;
 	}
 
 	:global(a.router-link-active) {

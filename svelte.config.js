@@ -9,7 +9,7 @@ module.exports = {
                 sass.render(
                     {
                         data: content,
-                        includePaths: ['routes'],
+                        includePaths: [],
                         sourceMap: true,
                         outFile: 'x', // this is necessary, but is ignored
                     },
