@@ -1,10 +1,9 @@
-<i><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg">
+<svg class="icon" viewBox="{svg.viewBox}" xmlns="http://www.w3.org/2000/svg">
     {#if title}
     <title>{title}</title>
     {/if}
-    <use xlink:href="{icon_url}" xmlns:xlink="http://www.w3.org/1999/xlink"/>
+    <use xlink:href="{svg.url}" xmlns:xlink="http://www.w3.org/1999/xlink"/>
 </svg>
-</i>
 <script>
     export default {
         data:function(){
@@ -14,17 +13,17 @@
             }
         },
         computed:{
-            icon_url({name}){
+            svg({name}){
                 let i = require('./../../assets/icons/'+name+'.svg');
-                return i.default.url;
-            }
+                return i.default;
+            },
         },
     }
 </script>
 
 
 <style>
-    .svg-icon {
+    .icon {
       fill: currentColor;
       height: 24px;
       width: 24px;
