@@ -8,7 +8,7 @@ It is based on [template-webpack](https://github.com/sveltejs/template-webpack) 
 * Clear structure for new project
 * Using Webpack4. Hot Reload Modules enabled.
 * Using extract-css-chunks plugin for HRM supporting.
-* Supporting for SCSS in SFC.
+* Supporting for SCSS in SFC and external files.
 * Integrated router with two way navigation possibility. No page reload.
     * Regular URLs (you need set rewrite rule on production server!).
     * URL with hash(need configs changing)
@@ -26,6 +26,32 @@ cd svelte-app
 
 *Note that you will need to have [Node.js](https://nodejs.org) installed.*
 
+## Configuration
+
+You can change configuration in the `template.config.js` file:
+
+```javascript
+// Default title of the pages
+title: 'MyApp',      
+
+// hash - will handle URLs like localhost:8080/#/sub1/sub2
+// history - common URLs like localhost:8080/sub1/sub2 
+// Note: On production server you should manually set rewrite all requests to index.html
+urlmode: 'history',  
+
+// Use proxy endpoint to remote server: http://localhost:8080/api -> http://my.site/api
+proxy:{          
+
+    // Enable | Disable proxy feature
+    enabled: false,  
+
+    // Endpoint on local environment , Remote server to handle endpoint                      
+    endpoints:[
+        ['/api' , 'http://my.site'],     
+        ...
+    ]    
+}
+```
 
 ## Get started
 
@@ -50,25 +76,4 @@ Navigate to [localhost:8080](http://localhost:8080). You should see your app run
 npm run build
 ```
 
-Then all you builded SPA files will be in public directory.
-
-## URLs
-Default settings uses ordinary URLs based on `"history"` method. You can change mode to `"hash"` in `./App.html` to use URLs with `#` sign.
-
-## Proxy
-
-There is proxy which can be used for external API calls in development environment. Please check out `webpack.config.js` file to edit your API path:
-
-```javascript
-...
-devServer: {
-    ...
-    proxy: {
-        '/api': {
-            target: 'https://my.site/', //will proxy to https://my.site/api
-            secure: false
-        }
-    }
-}
-...
-```
+Then all you builded SPA files will be in `dist` directory.

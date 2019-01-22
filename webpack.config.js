@@ -3,6 +3,7 @@ var path = require('path');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+const Config = require('./template.config.js');
 
 const mode = process.env.NODE_ENV || 'development';
 const prod = mode === 'production';
@@ -24,17 +25,12 @@ module.exports = {
 		compress: true,
 		inline:true,
 		hot:true,
-		historyApiFallback: true,
+		historyApiFallback: Config.is_history(),
 		overlay: {
 			warnings: true,
 			errors: true
 		},
-		proxy: {
-			'/api': {
-			  target: 'https://my.site/', //will proxy to https://my.site/api
-			  secure: false
-			}
-		  }
+		proxy: Config.proxy_param()
 	},
 	module: {
 		rules: [
@@ -76,7 +72,7 @@ module.exports = {
 	mode,
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: ' ',
+			title: Config.title,
 			hash: true,
 			files: {
 			}
