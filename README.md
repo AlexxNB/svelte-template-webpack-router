@@ -1,6 +1,6 @@
 # Svelte SPA Template (Webpack version)
 
-** In any case it is better to use template based on Rollup. You can find it here: https://github.com/AlexxNB/svelte-template-spa**
+**In any case it is better to use template based on Rollup. You can find it here:** https://github.com/AlexxNB/svelte-template-spa 
 
 This is a project template for [Svelte](https://svelte.technology) single page apps. It lives at https://github.com/AlexxNB/svelte-template-webpack-router.
 
